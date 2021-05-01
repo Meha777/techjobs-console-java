@@ -2,6 +2,7 @@ package org.launchcode.techjobs.console;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -38,7 +39,9 @@ public class TechJobs {
                 String columnChoice = getUserSelection("List", columnChoices);
 
                 if (columnChoice.equals("all")) {
+
                     printJobs(JobData.findAll());
+
                 } else {
 
                     ArrayList<String> results = JobData.findAll(columnChoice);
@@ -58,15 +61,21 @@ public class TechJobs {
 
                 // What is their search term?
                 System.out.println("\nSearch term: ");
+
                 String searchTerm = in.nextLine();
 
+
+
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
+
+                    printJobs(JobData.findByValue(searchTerm));
+
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
             }
         }
+
     }
 
     // ﻿Returns the key of the selected item from the choices Dictionary
@@ -111,6 +120,17 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+        for(HashMap<String, String> job : someJobs) {
+
+            for (Map.Entry<String, String> partOfJob : job.entrySet()) {
+
+                System.out.println(partOfJob.getKey() + " : " + partOfJob.getValue());
+
+            }
+            System.out.println("*****");
+        }
+
     }
+
 }
+
