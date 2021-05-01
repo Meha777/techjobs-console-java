@@ -1,9 +1,6 @@
 package org.launchcode.techjobs.console;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -40,7 +37,7 @@ public class TechJobs {
 
                 if (columnChoice.equals("all")) {
 
-                    printJobs(JobData.findAll());
+                    printJobs((JobData.findAll()));
 
                 } else {
 
